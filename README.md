@@ -57,6 +57,28 @@ A Java console application to manage student grades.
 - User input handling
 - Menu-driven programming
 
+
+## Milestone 5.1 - Interactive Menu
+
+### Features Added
+- Interactive console menu using `Scanner`
+- Add Student
+- View Students
+- Search Student
+- Update Student Marks
+- Delete Student
+- View Class Statistics
+- Save student data
+- Exit with automatic data saving
+
+### Java Concepts Learned
+- Scanner
+- while loop
+- switch-case
+- Object references
+- CRUD operations
+- Menu-driven programming
+
 ## Project Structure
 
 ```
