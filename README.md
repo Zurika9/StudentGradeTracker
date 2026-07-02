@@ -101,6 +101,16 @@ Displays the student with the highest marks in the class.
 - Object references
 - Encapsulation using getter methods
 
+### Feature 3 - Filter Students by Grade
+
+Users can filter and display students based on their grades (A, B, C, D, F).
+
+**Concepts Learned**
+- Filtering data from an ArrayList
+- Character comparison
+- Boolean flags
+- User input handling
+
 ## Project Structure
 
 ```
