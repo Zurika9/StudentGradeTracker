@@ -485,6 +485,42 @@ public class StudentManager
         }
 
     }
+    // Method to search students by name
+    public void searchStudentByName(String searchName) {
+
+        // Variable to check whether a student was found
+        boolean found = false;
+
+        // Display heading
+        System.out.println("\n===== SEARCH RESULTS =====");
+
+        // Convert search text to lowercase
+        searchName = searchName.toLowerCase();
+
+        // Loop through every student
+        for (Student student : students) {
+
+            // Check whether the student's name contains the search text
+            if (student.getName().toLowerCase().contains(searchName)) {
+
+                // Display the student
+                System.out.println(student);
+
+                // Student found
+                found = true;
+
+            }
+
+        }
+
+        // Display message if no student matches
+        if (!found) {
+
+            System.out.println("No students found.");
+
+        }
+
+    }
 
 }
 

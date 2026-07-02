@@ -30,15 +30,16 @@ public class Main
             // Display all available options
             System.out.println("1. Add Student");
             System.out.println("2. View Students");
-            System.out.println("3. Search Student");
-            System.out.println("4. Update Marks");
-            System.out.println("5. Delete Student");
-            System.out.println("6. View Statistics");
-            System.out.println("7. Sort Students By Marks");
-            System.out.println("8. Display Topper");
-            System.out.println("9. Filter Students By Grade");
-            System.out.println("10. Save Data");
-            System.out.println("11. Exit");
+            System.out.println("3. Search Student by ID");
+            System.out.println("4. Search Student by Name");
+            System.out.println("5. Update Marks");
+            System.out.println("6. Delete Student");
+            System.out.println("7. View Statistics");
+            System.out.println("8. Sort Students By Marks");
+            System.out.println("9. Display Topper");
+            System.out.println("10. Filter Students By Grade");
+            System.out.println("11. Save Data");
+            System.out.println("12. Exit");
 
             while(true)
             {
@@ -213,6 +214,23 @@ public class Main
 
                 case 4:
 
+                    // Consume the leftover newline character
+                    scanner.nextLine();
+
+                    // Ask the user to enter a name to search
+                    System.out.print("Enter Student Name: ");
+
+                    // Read the complete name or partial name
+                    String searchName = scanner.nextLine();
+
+                    // Search students by name
+                    manager.searchStudentByName(searchName);
+
+                    // Exit this case
+                    break;
+
+                case 5:
+
                     // Ask the user for the student's ID
                     System.out.print("Enter Student ID to update: ");
 
@@ -231,7 +249,7 @@ public class Main
                     // Exit this case
                     break;
 
-                case 5:
+                case 6:
 
                     // Ask the user to enter the student ID to delete
                     System.out.print("Enter Student ID to delete: ");
@@ -245,7 +263,7 @@ public class Main
                     // Exit this case
                     break;
 
-                case 6:
+                case 7:
 
                     // Display statistics of all students
                     manager.displayStatistics();
@@ -253,21 +271,21 @@ public class Main
                     // Exit this case
                     break;
 
-                case 7:
+                case 8:
 
                     // Display students sorted by marks
                     manager.sortStudentsByMarks();
 
                     break;
 
-                case 8:
+                case 9:
 
                     // Display the student with the highest marks
                     manager.displayTopper();
 
                     break;
 
-                case 9:
+                case 10:
 
                     // Ask the user to enter a grade
                     System.out.print("Enter Grade (A/B/C/D/F): ");
@@ -280,14 +298,14 @@ public class Main
 
                     break;
 
-                case 10:
+                case 11:
 
                     // Save all students to the file
                     manager.saveToFile();
 
                     break;
 
-                case 11:
+                case 12:
 
                     // Display exit message
                     System.out.println("Exiting program...");
