@@ -1,0 +1,16 @@
+### IntelliJ IDEA ###
+# IntelliJ
+# IntelliJ IDEA
+.idea/
+
+# IntelliJ module files
+*.iml
+
+# Build output
+out/
+
+# Java compiled files
+*.class
+
+# Logs
+*.log
