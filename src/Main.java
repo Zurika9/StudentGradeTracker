@@ -35,8 +35,10 @@ public class Main
             System.out.println("5. Delete Student");
             System.out.println("6. View Statistics");
             System.out.println("7. Sort Students By Marks");
-            System.out.println("8. Save Data");
-            System.out.println("9. Exit");
+            System.out.println("8. Display Topper");
+            System.out.println("9. Save Data Exit");
+            System.out.println("10. Exit");
+
 
             // Ask the user to enter a choice
             System.out.print("Enter your choice: ");
@@ -168,12 +170,19 @@ public class Main
 
                 case 8:
 
+                    // Display the student with the highest marks
+                    manager.displayTopper();
+
+                    break;
+
+                case 9:
+
                     // Save all students to the file
                     manager.saveToFile();
 
                     break;
 
-                case 9:
+                case 10:
 
                     // Display exit message
                     System.out.println("Exiting program...");

@@ -371,6 +371,50 @@ public class StudentManager
         }
 
     }
+
+    // Method to display the student with the highest marks
+    public void displayTopper()
+    {
+
+        // Check if the student list is empty
+        if (students.isEmpty())
+        {
+
+            // Display a message if there are no students
+            System.out.println("No students available.");
+
+            return;
+        }
+
+        // Assume the first student is the topper initially
+        Student topper = students.get(0);
+
+        // Loop through all students
+        for (Student student : students)
+        {
+
+            // Check if the current student has more marks
+            if (student.getMarks() > topper.getMarks())
+            {
+
+                // Update the topper
+                topper = student;
+
+            }
+
+        }
+
+        // Display the topper details
+        System.out.println("\n===== CLASS TOPPER =====");
+
+        System.out.println("ID    : " + topper.getId());
+
+        System.out.println("Name  : " + topper.getName());
+
+        System.out.println("Marks : " + topper.getMarks());
+
+        System.out.println("Grade : " + topper.getGrade());
+    }
 }
 
 
