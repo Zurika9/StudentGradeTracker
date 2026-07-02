@@ -90,32 +90,80 @@ public class Main
 
                 case 3:
 
-                    System.out.println("Search Student selected.");
+                    // Ask the user to enter the student ID to search
+                    System.out.print("Enter Student ID to search: ");
 
+                    // Read the ID entered by the user
+                    int searchId = scanner.nextInt();
+
+                    // Search for the student using StudentManager
+                    Student foundStudent = manager.searchStudent(searchId);
+
+                    // Check if a student was found
+                    if (foundStudent != null) {
+
+                        // Display the student's details
+                        System.out.println("\n===== Student Found =====");
+                        System.out.println(foundStudent);
+
+                    } else {
+
+                        // Display message if no student exists with that ID
+                        System.out.println("Student not found.");
+
+                    }
+
+                    // Exit this case
                     break;
 
                 case 4:
 
-                    System.out.println("Update Marks selected.");
+                    // Ask the user for the student's ID
+                    System.out.print("Enter Student ID to update: ");
 
+                    // Read the student's ID
+                    int updateId = scanner.nextInt();
+
+                    // Ask the user for the new marks
+                    System.out.print("Enter New Marks: ");
+
+                    // Read the new marks
+                    double newMarks = scanner.nextDouble();
+
+                    // Update the student's marks
+                    manager.updateMarks(updateId, newMarks);
+
+                    // Exit this case
                     break;
 
                 case 5:
 
-                    System.out.println("Delete Student selected.");
+                    // Ask the user to enter the student ID to delete
+                    System.out.print("Enter Student ID to delete: ");
 
+                    // Read the student ID
+                    int deleteId = scanner.nextInt();
+
+                    // Delete the student from the list
+                    manager.deleteStudent(deleteId);
+
+                    // Exit this case
                     break;
 
                 case 6:
 
-                    System.out.println("View Statistics selected.");
+                    // Display statistics of all students
+                    manager.displayStatistics();
 
+                    // Exit this case
                     break;
 
                 case 7:
 
-                    System.out.println("Save Data selected.");
+                    // Save all student data to the file
+                    manager.saveToFile();
 
+                    // Exit this case
                     break;
 
                 case 8:

@@ -78,40 +78,57 @@ public class StudentManager
 
     }
 
-    public boolean deleteStudent(int id)
+    // Method to delete a student using their ID
+    public void deleteStudent(int id)
     {
 
-        Student student = searchStudent(id);
-
-        if (student != null)
+        // Loop through all students
+        for (Student student : students)
         {
 
-            students.remove(student);
+            // Check if the current student's ID matches
+            if (student.getId() == id)
+            {
 
-            return true;
+                // Remove the student from the list
+                students.remove(student);
 
+                // Display success message
+                System.out.println("Student deleted successfully.");
+
+                // Exit the method after deletion
+                return;
+            }
         }
 
-        return false;
-
+        // Display message if no student was found
+        System.out.println("Student not found.");
     }
 
-    public boolean updateMarks(int id, double marks)
+    // Method to update a student's marks
+    public void updateMarks(int id, double newMarks)
     {
 
-        Student student = searchStudent(id);
-
-        if (student != null)
+        // Search through every student
+        for (Student student : students)
         {
 
-            student.setMarks(marks);
+            // Check if the ID matches
+            if (student.getId() == id)
+            {
 
-            return true;
+                // Update the marks
+                student.setMarks(newMarks);
 
+                // Display success message
+                System.out.println("Marks updated successfully.");
+
+                return;
+            }
         }
 
-        return false;
-
+        // Display message if student was not found
+        System.out.println("Student not found.");
     }
 
     // Method to display statistics of all students
