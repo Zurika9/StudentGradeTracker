@@ -114,11 +114,19 @@ Users can filter and display students based on their grades (A, B, C, D, F).
 ## Feature 4 - Input Validation
 
 ### Added
+
 - Menu input validation using try-catch
 - Duplicate Student ID validation
 - Student name validation
 - Marks range validation (0-100)
 - Non-numeric marks handling
+
+### Feature 5 – Search Student by Name
+
+- Search students using full or partial names
+- Case-insensitive search
+- Displays all matching student records
+- Shows a message when no matching student is found
 
 ## Project Structure
 
