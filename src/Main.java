@@ -36,7 +36,7 @@ public class Main
             System.out.println("6. View Statistics");
             System.out.println("7. Sort Students By Marks");
             System.out.println("8. Display Topper");
-            System.out.println("9. Save Data Exit");
+            System.out.println("9. Save Data");
             System.out.println("10. Exit");
 
 
