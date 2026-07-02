@@ -14,7 +14,8 @@ A Java console application to manage student grades.
 - Assign Letter Grades (A–F)
 - Sort Students by Marks
 - Save Data to `grades.txt`
-- ## Milestone 4 - File Handling
+
+## Milestone 4 - File Handling
 
 ### Features Added
 - Save student records to `grades.txt`
@@ -39,6 +40,22 @@ A Java console application to manage student grades.
 - File Handling
 - IntelliJ IDEA
 - Git & GitHub
+
+## Milestone 5 - Menu-Driven Console Application
+
+### Features Added
+- Interactive console menu
+- User input using Scanner
+- Add Student through the menu
+- View Students through the menu
+- Exit option with automatic data saving
+
+### Java Concepts Learned
+- Scanner
+- while loop
+- switch-case
+- User input handling
+- Menu-driven programming
 
 ## Project Structure
 
