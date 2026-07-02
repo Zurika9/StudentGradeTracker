@@ -14,6 +14,22 @@ A Java console application to manage student grades.
 - Assign Letter Grades (A–F)
 - Sort Students by Marks
 - Save Data to `grades.txt`
+- ## Milestone 4 - File Handling
+
+### Features Added
+- Save student records to `grades.txt`
+- Load student records automatically on startup
+- Persistent storage using Java File I/O
+- Exception handling using try-catch
+- CSV-based storage format
+
+### Java Concepts Learned
+- FileReader
+- FileWriter
+- BufferedReader
+- BufferedWriter
+- IOException
+- Data Persistence
 
 ## Technologies Used
 
