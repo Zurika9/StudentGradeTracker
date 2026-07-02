@@ -34,8 +34,9 @@ public class Main
             System.out.println("4. Update Marks");
             System.out.println("5. Delete Student");
             System.out.println("6. View Statistics");
-            System.out.println("7. Save Data");
-            System.out.println("8. Exit");
+            System.out.println("7. Sort Students By Marks");
+            System.out.println("8. Save Data");
+            System.out.println("9. Exit");
 
             // Ask the user to enter a choice
             System.out.print("Enter your choice: ");
@@ -160,20 +161,27 @@ public class Main
 
                 case 7:
 
-                    // Save all student data to the file
-                    manager.saveToFile();
+                    // Display students sorted by marks
+                    manager.sortStudentsByMarks();
 
-                    // Exit this case
                     break;
 
                 case 8:
 
-                    System.out.println("Exiting program...");
-
-                    // Save all students before closing
+                    // Save all students to the file
                     manager.saveToFile();
 
-                    // Close Scanner object
+                    break;
+
+                case 9:
+
+                    // Display exit message
+                    System.out.println("Exiting program...");
+
+                    // Save all student data before closing
+                    manager.saveToFile();
+
+                    // Close the Scanner object
                     scanner.close();
 
                     // Exit the program

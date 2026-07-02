@@ -1,4 +1,11 @@
+// Import Collections class for sorting ArrayLists
+import java.util.Collections;
+
+// Import Comparator interface to define custom sorting logic
+import java.util.Comparator;
+
 import java.util.ArrayList;
+
 // Used to read data from a file
 import java.io.BufferedReader;
 
@@ -319,6 +326,47 @@ public class StudentManager
 
             // Display an error message if file reading fails
             System.out.println("Error reading file: " + e.getMessage());
+
+        }
+
+    }
+    // Method to sort students by marks in descending order
+    public void sortStudentsByMarks()
+    {
+
+        // Check if there are any students
+        if (students.isEmpty())
+        {
+
+            // Display message if the list is empty
+            System.out.println("No students available.");
+
+            return;
+        }
+
+        // Sort students in descending order of marks
+        Collections.sort(students, new Comparator<Student>()
+        {
+
+            @Override
+            public int compare(Student student1, Student student2)
+            {
+
+                // Compare marks in descending order
+                return Double.compare(student2.getMarks(), student1.getMarks());
+
+            }
+
+        });
+
+        // Display heading
+        System.out.println("\n===== Students Sorted By Marks =====");
+
+        // Display every student
+        for (Student student : students)
+        {
+
+            System.out.println(student);
 
         }
 
