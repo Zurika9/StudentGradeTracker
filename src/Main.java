@@ -16,7 +16,7 @@ public class Main
         Scanner scanner = new Scanner(System.in);
 
         // Variable to store the user's menu choice
-        int choice;
+        int choice=0;
 
         // Repeat the menu until the user chooses Exit
         while (true)
@@ -40,12 +40,31 @@ public class Main
             System.out.println("10. Save Data");
             System.out.println("11. Exit");
 
+            while(true)
+            {
+                try
+                {
 
-            // Ask the user to enter a choice
-            System.out.print("Enter your choice: ");
+                    // Ask the user to enter a menu choice
+                    System.out.print("Enter your choice: ");
 
-            // Read the user's choice
-            choice = scanner.nextInt();
+                    // Read the user's choice
+                    choice = scanner.nextInt();
+
+                    // Exit the validation loop if input is valid
+                    break;
+
+                }
+                catch (Exception e) {
+
+                    // Display an error message
+                    System.out.println("Invalid input! Please enter a number.");
+
+                    // Remove the invalid input from the Scanner
+                    scanner.nextLine();
+
+                }
+            }
 
             // Switch statement will execute the selected option
             switch (choice)
@@ -60,25 +79,97 @@ public class Main
                     // Read the student ID
                     int id = scanner.nextInt();
 
+                    // Check whether the entered ID already exists
+                    if (manager.isDuplicateId(id))
+                    {
+
+                        // Display an error message
+                        System.out.println("Student ID already exists.");
+
+                        // Return to the main menu
+                        break;
+
+                    }
+
                     // Consume the leftover newline character
                     scanner.nextLine();
 
-                    // Ask the user to enter the student's name
-                    System.out.print("Enter Student Name: ");
+                    // Variable to store the student's name
+                    String name;
 
-                    // Read the full name (including spaces)
-                    String name = scanner.nextLine();
+                    // Keep asking until a valid name is entered
+                    while (true)
+                    {
 
-                    // Ask the user to enter marks
-                    System.out.print("Enter Student Marks: ");
+                        // Ask the user to enter the student's name
+                        System.out.print("Enter Student Name: ");
 
-                    // Read the marks
-                    double marks = scanner.nextDouble();
+                        // Read the student's name
+                        name = scanner.nextLine();
+
+                        // Remove leading and trailing spaces
+                        name = name.trim();
+
+                        // Check if the name is not empty
+                        if (!name.isEmpty())
+                        {
+
+                            // Exit the loop if the name is valid
+                            break;
+
+                        }
+
+                        // Display an error message
+                        System.out.println("Student name cannot be empty.");
+
+                    }
+
+                    // Variable to store the student's marks
+                    double marks;
+
+                    // Keep asking until valid marks are entered
+                    while (true)
+                    {
+
+                        try
+                        {
+
+                            // Ask the user to enter the student's marks
+                            System.out.print("Enter Student Marks (0-100): ");
+
+                            // Read the marks
+                            marks = scanner.nextDouble();
+
+                            // Check if the marks are between 0 and 100
+                            if (marks >= 0 && marks <= 100)
+                            {
+
+                                // Exit the loop if marks are valid
+                                break;
+
+                            }
+
+                            // Display an error message for invalid marks
+                            System.out.println("Marks must be between 0 and 100.");
+
+                        }
+                        catch (Exception e)
+                        {
+
+                            // Display an error message for non-numeric input
+                            System.out.println("Invalid marks! Please enter a number.");
+
+                            // Remove the invalid input from the Scanner
+                            scanner.nextLine();
+
+                        }
+
+                    }
 
                     // Create a new Student object
                     Student student = new Student(id, name, marks);
 
-                    // Add the student to the manager
+                    // Add the student to the StudentManager
                     manager.addStudent(student);
 
                     // Exit this case

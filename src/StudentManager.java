@@ -84,6 +84,27 @@ public class StudentManager
         return null;
 
     }
+    // Method to check whether a student ID already exists
+    public boolean isDuplicateId(int id)
+    {
+
+        // Loop through every student in the list
+        for (Student student : students) {
+
+            // Check if the entered ID matches an existing student's ID
+            if (student.getId() == id) {
+
+                // Duplicate ID found
+                return true;
+
+            }
+
+        }
+
+        // No duplicate ID found
+        return false;
+
+    }
 
     // Method to delete a student using their ID
     public void deleteStudent(int id)
@@ -464,6 +485,7 @@ public class StudentManager
         }
 
     }
+
 }
 
 
