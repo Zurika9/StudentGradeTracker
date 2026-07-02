@@ -111,6 +111,15 @@ Users can filter and display students based on their grades (A, B, C, D, F).
 - Boolean flags
 - User input handling
 
+## Feature 4 - Input Validation
+
+### Added
+- Menu input validation using try-catch
+- Duplicate Student ID validation
+- Student name validation
+- Marks range validation (0-100)
+- Non-numeric marks handling
+
 ## Project Structure
 
 ```
