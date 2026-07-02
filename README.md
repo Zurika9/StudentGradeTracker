@@ -79,6 +79,18 @@ A Java console application to manage student grades.
 - CRUD operations
 - Menu-driven programming
 
+## Milestone 6 - Advanced Features
+
+### Feature 1 - Student Sorting
+
+Students can now be sorted in descending order based on their marks.
+
+**Concepts Learned**
+- Collections.sort()
+- Comparator
+- Custom object sorting
+- Descending order sorting
+
 ## Project Structure
 
 ```
