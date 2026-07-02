@@ -91,6 +91,16 @@ Students can now be sorted in descending order based on their marks.
 - Custom object sorting
 - Descending order sorting
 
+### Feature 2 - Class Topper
+
+Displays the student with the highest marks in the class.
+
+**Concepts Learned**
+- Traversing an ArrayList
+- Finding the maximum value
+- Object references
+- Encapsulation using getter methods
+
 ## Project Structure
 
 ```
