@@ -36,8 +36,9 @@ public class Main
             System.out.println("6. View Statistics");
             System.out.println("7. Sort Students By Marks");
             System.out.println("8. Display Topper");
-            System.out.println("9. Save Data");
-            System.out.println("10. Exit");
+            System.out.println("9. Filter Students By Grade");
+            System.out.println("10. Save Data");
+            System.out.println("11. Exit");
 
 
             // Ask the user to enter a choice
@@ -177,12 +178,25 @@ public class Main
 
                 case 9:
 
+                    // Ask the user to enter a grade
+                    System.out.print("Enter Grade (A/B/C/D/F): ");
+
+                    // Read the grade entered by the user
+                    char grade = scanner.next().toUpperCase().charAt(0);
+
+                    // Display students with the entered grade
+                    manager.filterStudentsByGrade(grade);
+
+                    break;
+
+                case 10:
+
                     // Save all students to the file
                     manager.saveToFile();
 
                     break;
 
-                case 10:
+                case 11:
 
                     // Display exit message
                     System.out.println("Exiting program...");

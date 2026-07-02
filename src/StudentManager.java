@@ -415,6 +415,55 @@ public class StudentManager
 
         System.out.println("Grade : " + topper.getGrade());
     }
+
+    // Method to display students having a specific grade
+    public void filterStudentsByGrade(char grade)
+    {
+
+        // Check if there are any students
+        if (students.isEmpty())
+        {
+
+            // Display message if the list is empty
+            System.out.println("No students available.");
+
+            return;
+
+        }
+
+        // Variable to check whether any student matches the grade
+        boolean found = false;
+
+        // Display heading
+        System.out.println("\n===== STUDENTS WITH GRADE " + grade + " =====");
+
+        // Loop through every student
+        for (Student student : students)
+        {
+
+            // Check if the student's grade matches the entered grade
+            if (student.getGrade() == grade)
+            {
+
+                // Display the student's details
+                System.out.println(student);
+
+                // At least one student was found
+                found = true;
+
+            }
+
+        }
+
+        // Display message if no student matches
+        if (!found)
+        {
+
+            System.out.println("No students found with Grade " + grade);
+
+        }
+
+    }
 }
 
 
