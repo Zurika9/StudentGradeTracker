@@ -1,6 +1,10 @@
-public class Main {
+// Import Scanner class to take keyboard input from the user
+import java.util.Scanner;
+public class Main
+{
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
 
         StudentManager manager = new StudentManager();
         // Create the StudentManager object
@@ -8,50 +12,135 @@ public class Main {
         // Load previously saved student data
         manager.loadFromFile();
 
-        //manager.addStudent(new Student(101, "Bhavya", 92));
-        //manager.addStudent(new Student(102, "Rahul", 90));
-        //manager.addStudent(new Student(103, "Priya", 76));
-        //manager.addStudent(new Student(104, "Aman", 67));
-        //manager.addStudent(new Student(105, "Rohan", 25));
+        // Create Scanner object for taking user input
+        Scanner scanner = new Scanner(System.in);
 
-        manager.viewStudents();
+        // Variable to store the user's menu choice
+        int choice;
 
-        System.out.println();
+        // Repeat the menu until the user chooses Exit
+        while (true)
+        {
 
-        // Search for the student with ID 999
-        //Student student = manager.searchStudent(999);
+            // Display application title
+            System.out.println("\n=========================================");
+            System.out.println("      STUDENT GRADE TRACKER");
+            System.out.println("=========================================");
 
-        // Check if the student exists
-        /*if (student != null) {
+            // Display all available options
+            System.out.println("1. Add Student");
+            System.out.println("2. View Students");
+            System.out.println("3. Search Student");
+            System.out.println("4. Update Marks");
+            System.out.println("5. Delete Student");
+            System.out.println("6. View Statistics");
+            System.out.println("7. Save Data");
+            System.out.println("8. Exit");
 
-            // Display the student's details
-            System.out.println("Found: " + student);
+            // Ask the user to enter a choice
+            System.out.print("Enter your choice: ");
 
-        } else {
+            // Read the user's choice
+            choice = scanner.nextInt();
 
-            // Display a message if no student is found
-            System.out.println("Student not found.");
+            // Switch statement will execute the selected option
+            switch (choice)
+            {
 
-        }*/
+                // Temporary placeholder
+                case 1:
 
-        //manager.updateMarks(103, 95);
+                    // Ask the user to enter the student ID
+                    System.out.print("Enter Student ID: ");
 
-        //System.out.println();
+                    // Read the student ID
+                    int id = scanner.nextInt();
 
-        //manager.viewStudents();
+                    // Consume the leftover newline character
+                    scanner.nextLine();
 
-        //manager.deleteStudent(999);
+                    // Ask the user to enter the student's name
+                    System.out.print("Enter Student Name: ");
 
-        //System.out.println();
+                    // Read the full name (including spaces)
+                    String name = scanner.nextLine();
 
-        //manager.viewStudents();
+                    // Ask the user to enter marks
+                    System.out.print("Enter Student Marks: ");
 
-        // Display the statistics of all students
-        manager.displayStatistics();
+                    // Read the marks
+                    double marks = scanner.nextDouble();
+
+                    // Create a new Student object
+                    Student student = new Student(id, name, marks);
+
+                    // Add the student to the manager
+                    manager.addStudent(student);
+
+                    // Exit this case
+                    break;
+
+                case 2:
+
+                    // Display all students stored in the system
+                    manager.viewStudents();
+
+                    // Exit this case
+                    break;
+
+                case 3:
+
+                    System.out.println("Search Student selected.");
+
+                    break;
+
+                case 4:
+
+                    System.out.println("Update Marks selected.");
+
+                    break;
+
+                case 5:
+
+                    System.out.println("Delete Student selected.");
+
+                    break;
+
+                case 6:
+
+                    System.out.println("View Statistics selected.");
+
+                    break;
+
+                case 7:
+
+                    System.out.println("Save Data selected.");
+
+                    break;
+
+                case 8:
+
+                    System.out.println("Exiting program...");
+
+                    // Save all students before closing
+                    manager.saveToFile();
+
+                    // Close Scanner object
+                    scanner.close();
+
+                    // Exit the program
+                    return;
+
+                default:
+
+                    // Display error for invalid choice
+                    System.out.println("Invalid choice! Please try again.");
+
+            }
+
+        }
 
 
-        // Save all students before closing the application
-        manager.saveToFile();
     }
 }
 
