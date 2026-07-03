@@ -133,6 +133,45 @@ Users can filter and display students based on their grades (A, B, C, D, F).
 - Uses descending order sorting
 - Shows rank numbers for each student
 
+## Feature 7 – Grade Distribution
+
+### Overview
+Implemented a Grade Distribution Report that analyzes student grades and displays the number of students in each grade category using a simple console-based bar chart.
+
+### Features
+- Counts students with Grades A, B, C, D, and F.
+- Displays grade-wise distribution.
+- Generates a console bar chart using '*' characters.
+- Handles empty student lists gracefully.
+- Automatically reflects changes after adding, updating, or deleting students.
+
+### Sample Output
+
+```text
+========== GRADE DISTRIBUTION ==========
+
+Grade A : 4  ****
+Grade B : 1  *
+Grade C : 0
+Grade D : 0
+Grade F : 0
+
+========================================
+```
+
+### Concepts Used
+- Enhanced for loop
+- Switch statement
+- Conditional logic
+- Console visualization
+- Report generation
+- Object-Oriented Programming (OOP)
+
+### Files Updated
+- StudentManager.java
+- Main.java
+- README.md
+
 
 ## Project Structure
 
