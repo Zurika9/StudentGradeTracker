@@ -22,12 +22,10 @@ public class Main
         while (true)
         {
 
-            // Display application title
             System.out.println("\n=========================================");
-            System.out.println("      STUDENT GRADE TRACKER");
+            System.out.println(" STUDENT REPORT CARD MANAGEMENT SYSTEM ");
             System.out.println("=========================================");
 
-            // Display all available options
             System.out.println("1. Add Student");
             System.out.println("2. View Students");
             System.out.println("3. Search Student by ID");
@@ -44,46 +42,36 @@ public class Main
             System.out.println("14. Save Data");
             System.out.println("15. Exit");
 
-            while(true)
+            try
             {
-                try
-                {
 
-                    // Ask the user to enter a menu choice
-                    System.out.print("Enter your choice: ");
+                System.out.print("\nEnter your choice: ");
 
-                    // Read the user's choice
-                    choice = scanner.nextInt();
+                choice = scanner.nextInt();
 
-                    // Exit the validation loop if input is valid
-                    break;
+            }
+            catch (Exception e)
+            {
 
-                }
-                catch (Exception e) {
+                System.out.println("Invalid input!");
 
-                    // Display an error message
-                    System.out.println("Invalid input! Please enter a number.");
+                scanner.nextLine();
 
-                    // Remove the invalid input from the Scanner
-                    scanner.nextLine();
+                continue;
 
-                }
             }
 
-            // Switch statement will execute the selected option
-            switch (choice)
-            {
+            switch (choice) {
 
                 // Temporary placeholder
-                case 1:
+                case 1: {
 
                     // Ask the user to enter the student ID
                     System.out.print("Enter Student ID: ");
                     int id = scanner.nextInt();
 
                     // Check whether the entered ID already exists
-                    if (manager.isDuplicateId(id))
-                    {
+                    if (manager.isDuplicateId(id)) {
                         System.out.println("Student ID already exists.");
                         break;
                     }
@@ -93,8 +81,7 @@ public class Main
 
                     // Read student name
                     String name;
-                    while (true)
-                    {
+                    while (true) {
                         System.out.print("Enter Student Name: ");
                         name = scanner.nextLine().trim();
 
@@ -106,10 +93,8 @@ public class Main
 
                     // Read English marks
                     double english;
-                    while (true)
-                    {
-                        try
-                        {
+                    while (true) {
+                        try {
                             System.out.print("Enter English Marks (0-100): ");
                             english = scanner.nextDouble();
 
@@ -117,9 +102,7 @@ public class Main
                                 break;
 
                             System.out.println("Marks must be between 0 and 100.");
-                        }
-                        catch (Exception e)
-                        {
+                        } catch (Exception e) {
                             System.out.println("Invalid input!");
                             scanner.nextLine();
                         }
@@ -127,10 +110,8 @@ public class Main
 
                     // Read Mathematics marks
                     double mathematics;
-                    while (true)
-                    {
-                        try
-                        {
+                    while (true) {
+                        try {
                             System.out.print("Enter Mathematics Marks (0-100): ");
                             mathematics = scanner.nextDouble();
 
@@ -138,9 +119,7 @@ public class Main
                                 break;
 
                             System.out.println("Marks must be between 0 and 100.");
-                        }
-                        catch (Exception e)
-                        {
+                        } catch (Exception e) {
                             System.out.println("Invalid input!");
                             scanner.nextLine();
                         }
@@ -148,10 +127,8 @@ public class Main
 
                     // Read Science marks
                     double science;
-                    while (true)
-                    {
-                        try
-                        {
+                    while (true) {
+                        try {
                             System.out.print("Enter Science Marks (0-100): ");
                             science = scanner.nextDouble();
 
@@ -159,9 +136,7 @@ public class Main
                                 break;
 
                             System.out.println("Marks must be between 0 and 100.");
-                        }
-                        catch (Exception e)
-                        {
+                        } catch (Exception e) {
                             System.out.println("Invalid input!");
                             scanner.nextLine();
                         }
@@ -169,10 +144,8 @@ public class Main
 
                     // Read Computer marks
                     double computer;
-                    while (true)
-                    {
-                        try
-                        {
+                    while (true) {
+                        try {
                             System.out.print("Enter Computer Marks (0-100): ");
                             computer = scanner.nextDouble();
 
@@ -180,9 +153,7 @@ public class Main
                                 break;
 
                             System.out.println("Marks must be between 0 and 100.");
-                        }
-                        catch (Exception e)
-                        {
+                        } catch (Exception e) {
                             System.out.println("Invalid input!");
                             scanner.nextLine();
                         }
@@ -190,10 +161,8 @@ public class Main
 
                     // Read Social marks
                     double social;
-                    while (true)
-                    {
-                        try
-                        {
+                    while (true) {
+                        try {
                             System.out.print("Enter Social Marks (0-100): ");
                             social = scanner.nextDouble();
 
@@ -201,9 +170,7 @@ public class Main
                                 break;
 
                             System.out.println("Marks must be between 0 and 100.");
-                        }
-                        catch (Exception e)
-                        {
+                        } catch (Exception e) {
                             System.out.println("Invalid input!");
                             scanner.nextLine();
                         }
@@ -224,16 +191,18 @@ public class Main
                     manager.addStudent(student);
 
                     break;
+                }
 
-                case 2:
+                case 2: {
 
                     // Display all students stored in the system
                     manager.viewStudents();
 
                     // Exit this case
                     break;
+                }
 
-                case 3:
+                case 3: {
 
                     // Ask the user to enter the student ID to search
                     System.out.print("Enter Student ID to search: ");
@@ -260,8 +229,9 @@ public class Main
 
                     // Exit this case
                     break;
+                }
 
-                case 4:
+                case 4: {
 
                     // Consume the leftover newline character
                     scanner.nextLine();
@@ -277,28 +247,45 @@ public class Main
 
                     // Exit this case
                     break;
+                }
 
-                case 5:
+                case 5: {
 
-                    // Ask the user for the student's ID
-                    System.out.print("Enter Student ID to update: ");
+                    // Ask for Student ID
+                    System.out.print("Enter Student ID: ");
 
-                    // Read the student's ID
                     int updateId = scanner.nextInt();
 
-                    // Ask the user for the new marks
-                    System.out.print("Enter New Marks: ");
+                    // Input new subject marks
+                    System.out.print("Enter English Marks: ");
+                    double english = scanner.nextDouble();
 
-                    // Read the new marks
-                    double newMarks = scanner.nextDouble();
+                    System.out.print("Enter Mathematics Marks: ");
+                    double mathematics = scanner.nextDouble();
 
-                    // Update the student's marks
-                    manager.updateMarks(updateId, newMarks);
+                    System.out.print("Enter Science Marks: ");
+                    double science = scanner.nextDouble();
 
-                    // Exit this case
+                    System.out.print("Enter Computer Marks: ");
+                    double computer = scanner.nextDouble();
+
+                    System.out.print("Enter Social Marks: ");
+                    double social = scanner.nextDouble();
+
+                    // Update marks
+                    manager.updateMarks(
+                            updateId,
+                            english,
+                            mathematics,
+                            science,
+                            computer,
+                            social
+                    );
+
                     break;
+                }
 
-                case 6:
+                case 6: {
 
                     // Ask the user to enter the student ID to delete
                     System.out.print("Enter Student ID to delete: ");
@@ -311,38 +298,45 @@ public class Main
 
                     // Exit this case
                     break;
+                }
 
-                case 7:
+                case 7: {
 
                     // Display statistics of all students
                     manager.displayStatistics();
 
                     // Exit this case
                     break;
+                }
 
-                case 8:
+                case 8: {
 
-                    // Display students sorted by marks
-                    manager.sortStudentsByMarks();
+                    // Display students sorted by average
+                    manager.sortStudentsByAverage();
 
                     break;
+                }
 
-                case 9:
+                case 9: {
 
                     // Display the student with the highest marks
                     manager.displayTopper();
 
                     break;
+                }
 
                 case 10:
+                {
 
                     // Display all students with their rankings
                     manager.displayRankings();
 
                     // Exit this case
                     break;
+                }
 
                 case 11:
+                {
 
                     // Ask the user to enter a grade
                     System.out.print("Enter Grade (A/B/C/D/F): ");
@@ -354,30 +348,38 @@ public class Main
                     manager.filterStudentsByGrade(grade);
 
                     break;
+                }
 
                 case 12:
+                {
 
                     // Display grade distribution
                     manager.displayGradeDistribution();
 
                     // Exit this case
                     break;
+                }
 
                 case 13:
+                {
 
                     // Export all student records to a CSV file
                     manager.exportToCSV();
 
                     break;
+                }
 
                 case 14:
+                {
 
                     // Save all students to the file
                     manager.saveToFile();
 
                     break;
+                }
 
                 case 15:
+                {
 
                     // Display exit message
                     System.out.println("Exiting program...");
@@ -385,11 +387,14 @@ public class Main
                     // Save all student data before closing
                     manager.saveToFile();
 
+                    System.out.println("Thank you for using Student Report Card Management System.");
+
                     // Close the Scanner object
                     scanner.close();
 
                     // Exit the program
                     return;
+                }
 
                 default:
 

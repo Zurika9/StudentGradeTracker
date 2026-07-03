@@ -334,7 +334,7 @@ public class StudentManager
     }
 
     // Method to sort students by average marks
-    public void sortStudentsByMarks()
+    public void sortStudentsByAverage()
     {
 
         if (students.isEmpty())
