@@ -128,6 +128,12 @@ Users can filter and display students based on their grades (A, B, C, D, F).
 - Displays all matching student records
 - Shows a message when no matching student is found
 
+## Feature 6 – Student Rankings
+- Displays students ranked by marks
+- Uses descending order sorting
+- Shows rank numbers for each student
+
+
 ## Project Structure
 
 ```
