@@ -437,6 +437,45 @@ public class StudentManager
         System.out.println("Grade : " + topper.getGrade());
     }
 
+    // Method to display student rankings
+    public void displayRankings()
+    {
+
+        // Check whether any students exist
+        if (students.isEmpty())
+        {
+
+            System.out.println("No students available.");
+
+            return;
+
+        }
+
+        // Sort students in descending order of marks
+        students.sort((student1, student2) ->
+                Double.compare(student2.getMarks(), student1.getMarks()));
+
+        // Display heading
+        System.out.println("\n===== STUDENT RANKINGS =====");
+
+        // Variable to store the rank
+        int rank = 1;
+
+        // Display each student with rank
+        for (Student student : students)
+        {
+
+            System.out.println("Rank " + rank);
+            System.out.println(student);
+            System.out.println();
+
+            // Move to the next rank
+            rank++;
+
+        }
+
+    }
+
     // Method to display students having a specific grade
     public void filterStudentsByGrade(char grade)
     {

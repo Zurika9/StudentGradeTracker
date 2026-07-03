@@ -37,9 +37,10 @@ public class Main
             System.out.println("7. View Statistics");
             System.out.println("8. Sort Students By Marks");
             System.out.println("9. Display Topper");
-            System.out.println("10. Filter Students By Grade");
-            System.out.println("11. Save Data");
-            System.out.println("12. Exit");
+            System.out.println("10. Display Student Rankings");
+            System.out.println("11. Filter Students By Grade");
+            System.out.println("12. Save Data");
+            System.out.println("13. Exit");
 
             while(true)
             {
@@ -287,6 +288,14 @@ public class Main
 
                 case 10:
 
+                    // Display all students with their rankings
+                    manager.displayRankings();
+
+                    // Exit this case
+                    break;
+
+                case 11:
+
                     // Ask the user to enter a grade
                     System.out.print("Enter Grade (A/B/C/D/F): ");
 
@@ -298,14 +307,14 @@ public class Main
 
                     break;
 
-                case 11:
+                case 12:
 
                     // Save all students to the file
                     manager.saveToFile();
 
                     break;
 
-                case 12:
+                case 13:
 
                     // Display exit message
                     System.out.println("Exiting program...");
