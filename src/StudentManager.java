@@ -36,219 +36,184 @@ public class StudentManager
         students = new ArrayList<>();
     }
 
-
+    // Add a student
     public void addStudent(Student student)
     {
         students.add(student);
         System.out.println("Student added successfully.");
     }
 
+    // Display all students
     public void viewStudents()
     {
-
         if (students.isEmpty())
         {
-
             System.out.println("No students found.");
-
             return;
-
         }
 
-        System.out.println("\n===== Student List =====");
+        System.out.println("\n============= STUDENT LIST =============");
 
         for (Student student : students)
         {
-
             System.out.println(student);
-
         }
 
+        System.out.println("========================================");
     }
 
+    // Search by ID
     public Student searchStudent(int id)
     {
-
         for (Student student : students)
         {
-
             if (student.getId() == id)
             {
-
                 return student;
-
             }
-
         }
 
         return null;
-
     }
-    // Method to check whether a student ID already exists
+
+    // Check duplicate IDs
     public boolean isDuplicateId(int id)
     {
-
-        // Loop through every student in the list
-        for (Student student : students) {
-
-            // Check if the entered ID matches an existing student's ID
-            if (student.getId() == id) {
-
-                // Duplicate ID found
+        for (Student student : students)
+        {
+            if (student.getId() == id)
+            {
                 return true;
-
             }
-
         }
 
-        // No duplicate ID found
         return false;
-
     }
 
-    // Method to delete a student using their ID
+    // Delete student
     public void deleteStudent(int id)
     {
-
-        // Loop through all students
         for (Student student : students)
         {
-
-            // Check if the current student's ID matches
             if (student.getId() == id)
             {
-
-                // Remove the student from the list
                 students.remove(student);
 
-                // Display success message
                 System.out.println("Student deleted successfully.");
 
-                // Exit the method after deletion
                 return;
             }
         }
 
-        // Display message if no student was found
         System.out.println("Student not found.");
     }
 
-    // Method to update a student's marks
-    public void updateMarks(int id, double newMarks)
+    // Method to update all subject marks
+    public void updateMarks(
+            int id,
+            double english,
+            double mathematics,
+            double science,
+            double computer,
+            double social)
     {
 
-        // Search through every student
         for (Student student : students)
         {
 
-            // Check if the ID matches
             if (student.getId() == id)
             {
 
-                // Update the marks
-                student.setMarks(newMarks);
+                student.setMarks(
+                        english,
+                        mathematics,
+                        science,
+                        computer,
+                        social);
 
-                // Display success message
-                System.out.println("Marks updated successfully.");
+                System.out.println("Student marks updated successfully.");
 
                 return;
+
             }
+
         }
 
-        // Display message if student was not found
         System.out.println("Student not found.");
+
     }
 
-    // Method to display statistics of all students
+    // Method to display class statistics
     public void displayStatistics()
     {
 
-        // Check if there are any students in the list
         if (students.isEmpty())
         {
 
             System.out.println("No students available.");
-
             return;
+
         }
 
-        // Variable to store the total marks
-        double totalMarks = 0;
+        double totalAverage = 0;
 
-        // Assume the first student's marks are both highest and lowest
-        double highestMarks = students.get(0).getMarks();
-        double lowestMarks = students.get(0).getMarks();
+        double highestAverage = students.get(0).getAverageMarks();
+        double lowestAverage = students.get(0).getAverageMarks();
 
-        // Variables to count pass and fail students
         int passCount = 0;
         int failCount = 0;
 
-        // Loop through every student in the list
         for (Student student : students)
         {
 
-            // Get the current student's marks
-            double marks = student.getMarks();
+            double average = student.getAverageMarks();
 
-            // Add marks to the running total
-            totalMarks += marks;
+            totalAverage += average;
 
-            // Check if current marks are greater than highest marks
-            if (marks > highestMarks)
+            if (average > highestAverage)
             {
-
-                highestMarks = marks;
-
+                highestAverage = average;
             }
 
-            // Check if current marks are lower than lowest marks
-            if (marks < lowestMarks)
+            if (average < lowestAverage)
             {
-
-                lowestMarks = marks;
-
+                lowestAverage = average;
             }
 
-            // Students with 40 or more marks are considered passed
-            if (marks >= 40)
+            if (student.getGrade() != 'F')
             {
-
                 passCount++;
-
-            } else
+            }
+            else
             {
-
                 failCount++;
-
             }
 
         }
 
-        // Calculate average marks
-        double averageMarks = totalMarks / students.size();
+        double classAverage = totalAverage / students.size();
 
-        // Calculate pass percentage
-        double passPercentage = (double) passCount / students.size() * 100;
-
-        // Display the statistics
         System.out.println("\n========== CLASS STATISTICS ==========");
 
         System.out.println("Total Students : " + students.size());
 
-        System.out.println("Average Marks  : " + averageMarks);
+        System.out.printf("Class Average  : %.2f%n", classAverage);
 
-        System.out.println("Highest Marks  : " + highestMarks);
+        System.out.printf("Highest Average: %.2f%n", highestAverage);
 
-        System.out.println("Lowest Marks   : " + lowestMarks);
+        System.out.printf("Lowest Average : %.2f%n", lowestAverage);
 
         System.out.println("Pass Count     : " + passCount);
 
         System.out.println("Fail Count     : " + failCount);
 
-        System.out.printf("Pass Percentage: %.2f%%\n", passPercentage);
+        System.out.printf("Pass Percentage: %.2f%%%n",
+                (passCount * 100.0) / students.size());
 
         System.out.println("======================================");
+
     }
+
 
     // Method to save all students into grades.txt
     public void saveToFile()
@@ -257,35 +222,34 @@ public class StudentManager
         try
         {
 
-            // Create a writer object for grades.txt
-            BufferedWriter writer = new BufferedWriter(new FileWriter("grades.txt"));
+            BufferedWriter writer =
+                    new BufferedWriter(new FileWriter("grades.txt"));
 
-            // Loop through every student
             for (Student student : students)
             {
 
-                // Save one student per line in CSV format
                 writer.write(
                         student.getId() + "," +
                                 student.getName() + "," +
-                                student.getMarks()
+                                student.getEnglish() + "," +
+                                student.getMathematics() + "," +
+                                student.getScience() + "," +
+                                student.getComputer() + "," +
+                                student.getSocial()
                 );
 
-                // Move to the next line
                 writer.newLine();
+
             }
 
-            // Close the writer to save the file properly
             writer.close();
 
-            // Display success message
             System.out.println("Student data saved successfully.");
 
         }
         catch (IOException e)
         {
 
-            // Display error message if saving fails
             System.out.println("Error saving file: " + e.getMessage());
 
         }
@@ -296,152 +260,147 @@ public class StudentManager
     public void loadFromFile()
     {
 
-        // Print the absolute path of the file being read
         System.out.println(new File("grades.txt").getAbsolutePath());
 
         try
         {
 
-            // Check if the file exists
             File file = new File("grades.txt");
 
             if (!file.exists())
             {
 
-                // No file means no saved data
                 return;
 
             }
 
-            // Create a reader object
-            BufferedReader reader = new BufferedReader(new FileReader(file));
+            BufferedReader reader =
+                    new BufferedReader(new FileReader(file));
 
             String line;
 
-            // Read every line until the end of the file
             while ((line = reader.readLine()) != null)
             {
 
-                // Split the line using comma
                 String[] data = line.split(",");
 
-                // Convert String values to appropriate data types
-                int id = Integer.parseInt(data[0]);
-                String name = data[1];
-                double marks = Double.parseDouble(data[2]);
+                if (data.length != 7)
+                {
 
-                // Create a Student object and add it to the list
-                students.add(new Student(id, name, marks));
+                    continue;
+
+                }
+
+                int id = Integer.parseInt(data[0]);
+
+                String name = data[1];
+
+                double english = Double.parseDouble(data[2]);
+
+                double mathematics = Double.parseDouble(data[3]);
+
+                double science = Double.parseDouble(data[4]);
+
+                double computer = Double.parseDouble(data[5]);
+
+                double social = Double.parseDouble(data[6]);
+
+                students.add(
+                        new Student(
+                                id,
+                                name,
+                                english,
+                                mathematics,
+                                science,
+                                computer,
+                                social
+                        )
+                );
 
             }
 
-            // Close the reader after reading all data
             reader.close();
 
-            // Display success message
             System.out.println("Student data loaded successfully.");
 
         }
         catch (IOException e)
         {
 
-            // Display an error message if file reading fails
             System.out.println("Error reading file: " + e.getMessage());
 
         }
 
     }
-    // Method to sort students by marks in descending order
+
+    // Method to sort students by average marks
     public void sortStudentsByMarks()
     {
 
-        // Check if there are any students
         if (students.isEmpty())
         {
-
-            // Display message if the list is empty
             System.out.println("No students available.");
-
             return;
         }
 
-        // Sort students in descending order of marks
-        Collections.sort(students, new Comparator<Student>()
-        {
+        students.sort((student1, student2) ->
+                Double.compare(
+                        student2.getAverageMarks(),
+                        student1.getAverageMarks()));
 
-            @Override
-            public int compare(Student student1, Student student2)
-            {
+        System.out.println("\n========== STUDENTS SORTED BY AVERAGE ==========");
 
-                // Compare marks in descending order
-                return Double.compare(student2.getMarks(), student1.getMarks());
-
-            }
-
-        });
-
-        // Display heading
-        System.out.println("\n===== Students Sorted By Marks =====");
-
-        // Display every student
         for (Student student : students)
         {
-
             System.out.println(student);
-
         }
 
     }
 
-    // Method to display the student with the highest marks
+    // Method to display topper
     public void displayTopper()
     {
 
-        // Check if the student list is empty
         if (students.isEmpty())
         {
 
-            // Display a message if there are no students
             System.out.println("No students available.");
 
             return;
+
         }
 
-        // Assume the first student is the topper initially
         Student topper = students.get(0);
 
-        // Loop through all students
         for (Student student : students)
         {
 
-            // Check if the current student has more marks
-            if (student.getMarks() > topper.getMarks())
+            if (student.getAverageMarks() > topper.getAverageMarks())
             {
 
-                // Update the topper
                 topper = student;
 
             }
 
         }
 
-        // Display the topper details
-        System.out.println("\n===== CLASS TOPPER =====");
+        System.out.println("\n========== CLASS TOPPER ==========");
 
-        System.out.println("ID    : " + topper.getId());
+        System.out.println("ID       : " + topper.getId());
 
-        System.out.println("Name  : " + topper.getName());
+        System.out.println("Name     : " + topper.getName());
 
-        System.out.println("Marks : " + topper.getMarks());
+        System.out.printf("Average  : %.2f%n",
+                topper.getAverageMarks());
 
-        System.out.println("Grade : " + topper.getGrade());
+        System.out.println("Grade    : " + topper.getGrade());
+
     }
 
-    // Method to display student rankings
+    // Method to display rankings
     public void displayRankings()
     {
 
-        // Check whether any students exist
         if (students.isEmpty())
         {
 
@@ -451,28 +410,29 @@ public class StudentManager
 
         }
 
-        // Sort students in descending order of marks
         students.sort((student1, student2) ->
-                Double.compare(student2.getMarks(), student1.getMarks()));
+                Double.compare(
+                        student2.getAverageMarks(),
+                        student1.getAverageMarks()));
 
-        // Display heading
-        System.out.println("\n===== STUDENT RANKINGS =====");
+        System.out.println("\n========== STUDENT RANKINGS ==========");
 
-        // Variable to store the rank
         int rank = 1;
 
-        // Display each student with rank
         for (Student student : students)
         {
 
-            System.out.println("Rank " + rank);
-            System.out.println(student);
-            System.out.println();
+            System.out.println("--------------------------------------");
 
-            // Move to the next rank
+            System.out.println("Rank : " + rank);
+
+            System.out.println(student);
+
             rank++;
 
         }
+
+        System.out.println("--------------------------------------");
 
     }
 
@@ -623,26 +583,28 @@ public class StudentManager
     }
 
     // Method to export student data to a CSV file
+    // Method to export student report to CSV
     public void exportToCSV()
     {
 
         try
         {
 
-            // Create a writer for the CSV file
-            BufferedWriter writer = new BufferedWriter(new FileWriter("student_report.csv"));
+            BufferedWriter writer =
+                    new BufferedWriter(new FileWriter("student_report.csv"));
 
-            // Write the column headings
-            writer.write("Rank,ID,Name,Marks,Grade");
+            writer.write(
+                    "Rank,ID,Name,English,Mathematics,Science,Computer,Social,Total,Average,Grade");
+
             writer.newLine();
 
-            // Sort students by marks in descending order
-            students.sort((s1, s2) -> Double.compare(s2.getMarks(), s1.getMarks()));
+            students.sort((student1, student2) ->
+                    Double.compare(
+                            student2.getAverageMarks(),
+                            student1.getAverageMarks()));
 
-            // Variable to store the rank
             int rank = 1;
 
-            // Write every student's data
             for (Student student : students)
             {
 
@@ -650,9 +612,14 @@ public class StudentManager
                         rank + "," +
                                 student.getId() + "," +
                                 student.getName() + "," +
-                                student.getMarks() + "," +
-                                student.getGrade()
-                );
+                                student.getEnglish() + "," +
+                                student.getMathematics() + "," +
+                                student.getScience() + "," +
+                                student.getComputer() + "," +
+                                student.getSocial() + "," +
+                                student.getTotalMarks() + "," +
+                                String.format("%.2f", student.getAverageMarks()) + "," +
+                                student.getGrade());
 
                 writer.newLine();
 
@@ -660,16 +627,15 @@ public class StudentManager
 
             }
 
-            // Close the writer
             writer.close();
 
-            System.out.println("Student report exported successfully to student_report.csv");
+            System.out.println("Student report exported successfully.");
 
         }
         catch (IOException e)
         {
 
-            System.out.println("Error exporting CSV file: " + e.getMessage());
+            System.out.println("Error exporting CSV: " + e.getMessage());
 
         }
 

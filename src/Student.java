@@ -1,33 +1,36 @@
 public class Student
 {
+
     private int id;
     private String name;
-    private double marks;
-    private char grade;
 
-    public Student(int id, String name, double marks)
+    private double english;
+    private double mathematics;
+    private double science;
+    private double computer;
+    private double social;
+
+    // Constructor
+    public Student(
+            int id,
+            String name,
+            double english,
+            double mathematics,
+            double science,
+            double computer,
+            double social)
     {
+
         this.id = id;
         this.name = name;
-        this.marks = marks;
-        this.grade = calculateGrade();
+        this.english = english;
+        this.mathematics = mathematics;
+        this.science = science;
+        this.computer = computer;
+        this.social = social;
     }
 
-    private char calculateGrade()
-    {
-
-        if (marks >= 90)
-            return 'A';
-        else if (marks >= 80)
-            return 'B';
-        else if (marks >= 70)
-            return 'C';
-        else if (marks >= 60)
-            return 'D';
-        else
-            return 'F';
-    }
-
+    // Getters
     public int getId()
     {
         return id;
@@ -38,58 +41,95 @@ public class Student
         return name;
     }
 
-    public double getMarks()
+    public double getEnglish()
     {
-        return marks;
+        return english;
     }
 
-    // Method to return the student's grade
-        public char getGrade()
-        {
+    public double getMathematics()
+    {
+        return mathematics;
+    }
 
-        // Marks 90 and above
-        if (marks >= 90)
+    public double getScience()
+    {
+        return science;
+    }
+
+    public double getComputer()
+    {
+        return computer;
+    }
+
+    public double getSocial()
+    {
+        return social;
+    }
+
+    // Total Marks
+    public double getTotalMarks()
+    {
+        return english + mathematics + science + computer + social;
+    }
+
+    // Average Marks
+    public double getAverageMarks()
+    {
+        return getTotalMarks() / 5;
+    }
+
+    // Grade
+    public char getGrade()
+    {
+
+        double average = getAverageMarks();
+
+        if (average >= 90)
             return 'A';
-
-            // Marks 80 to 89
-        else if (marks >= 80)
+        else if (average >= 80)
             return 'B';
-
-            // Marks 70 to 79
-        else if (marks >= 70)
+        else if (average >= 70)
             return 'C';
-
-            // Marks 40 to 69
-        else if (marks >= 40)
+        else if (average >= 60)
             return 'D';
-
-            // Below 40
         else
             return 'F';
     }
 
-
+    // Update name
     public void setName(String name)
     {
         this.name = name;
     }
 
-    public void setMarks(double marks)
+    // Update all subject marks
+    public void setMarks(
+            double english,
+            double mathematics,
+            double science,
+            double computer,
+            double social)
     {
-        this.marks = marks;
-        this.grade = calculateGrade();
+
+        this.english = english;
+        this.mathematics = mathematics;
+        this.science = science;
+        this.computer = computer;
+        this.social = social;
     }
 
-    // Return a formatted string containing all student details
     @Override
     public String toString()
     {
 
         return "ID: " + id +
                 " | Name: " + name +
-                " | Marks: " + marks +
+                " | English: " + english +
+                " | Mathematics: " + mathematics +
+                " | Science: " + science +
+                " | Computer: " + computer +
+                " | Social: " + social +
+                " | Average: " + String.format("%.2f", getAverageMarks()) +
                 " | Grade: " + getGrade();
-
     }
-
-    }
+}

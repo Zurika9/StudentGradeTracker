@@ -35,7 +35,7 @@ public class Main
             System.out.println("5. Update Marks");
             System.out.println("6. Delete Student");
             System.out.println("7. View Statistics");
-            System.out.println("8. Sort Students By Marks");
+            System.out.println("8. Sort Students By Average");
             System.out.println("9. Display Topper");
             System.out.println("10. Display Student Rankings");
             System.out.println("11. Filter Students By Grade");
@@ -79,104 +79,150 @@ public class Main
 
                     // Ask the user to enter the student ID
                     System.out.print("Enter Student ID: ");
-
-                    // Read the student ID
                     int id = scanner.nextInt();
 
                     // Check whether the entered ID already exists
                     if (manager.isDuplicateId(id))
                     {
-
-                        // Display an error message
                         System.out.println("Student ID already exists.");
-
-                        // Return to the main menu
                         break;
-
                     }
 
-                    // Consume the leftover newline character
+                    // Consume leftover newline
                     scanner.nextLine();
 
-                    // Variable to store the student's name
+                    // Read student name
                     String name;
-
-                    // Keep asking until a valid name is entered
                     while (true)
                     {
-
-                        // Ask the user to enter the student's name
                         System.out.print("Enter Student Name: ");
+                        name = scanner.nextLine().trim();
 
-                        // Read the student's name
-                        name = scanner.nextLine();
-
-                        // Remove leading and trailing spaces
-                        name = name.trim();
-
-                        // Check if the name is not empty
                         if (!name.isEmpty())
-                        {
-
-                            // Exit the loop if the name is valid
                             break;
 
-                        }
-
-                        // Display an error message
                         System.out.println("Student name cannot be empty.");
-
                     }
 
-                    // Variable to store the student's marks
-                    double marks;
-
-                    // Keep asking until valid marks are entered
+                    // Read English marks
+                    double english;
                     while (true)
                     {
-
                         try
                         {
+                            System.out.print("Enter English Marks (0-100): ");
+                            english = scanner.nextDouble();
 
-                            // Ask the user to enter the student's marks
-                            System.out.print("Enter Student Marks (0-100): ");
-
-                            // Read the marks
-                            marks = scanner.nextDouble();
-
-                            // Check if the marks are between 0 and 100
-                            if (marks >= 0 && marks <= 100)
-                            {
-
-                                // Exit the loop if marks are valid
+                            if (english >= 0 && english <= 100)
                                 break;
 
-                            }
-
-                            // Display an error message for invalid marks
                             System.out.println("Marks must be between 0 and 100.");
-
                         }
                         catch (Exception e)
                         {
-
-                            // Display an error message for non-numeric input
-                            System.out.println("Invalid marks! Please enter a number.");
-
-                            // Remove the invalid input from the Scanner
+                            System.out.println("Invalid input!");
                             scanner.nextLine();
-
                         }
-
                     }
 
-                    // Create a new Student object
-                    Student student = new Student(id, name, marks);
+                    // Read Mathematics marks
+                    double mathematics;
+                    while (true)
+                    {
+                        try
+                        {
+                            System.out.print("Enter Mathematics Marks (0-100): ");
+                            mathematics = scanner.nextDouble();
 
-                    // Add the student to the StudentManager
+                            if (mathematics >= 0 && mathematics <= 100)
+                                break;
+
+                            System.out.println("Marks must be between 0 and 100.");
+                        }
+                        catch (Exception e)
+                        {
+                            System.out.println("Invalid input!");
+                            scanner.nextLine();
+                        }
+                    }
+
+                    // Read Science marks
+                    double science;
+                    while (true)
+                    {
+                        try
+                        {
+                            System.out.print("Enter Science Marks (0-100): ");
+                            science = scanner.nextDouble();
+
+                            if (science >= 0 && science <= 100)
+                                break;
+
+                            System.out.println("Marks must be between 0 and 100.");
+                        }
+                        catch (Exception e)
+                        {
+                            System.out.println("Invalid input!");
+                            scanner.nextLine();
+                        }
+                    }
+
+                    // Read Computer marks
+                    double computer;
+                    while (true)
+                    {
+                        try
+                        {
+                            System.out.print("Enter Computer Marks (0-100): ");
+                            computer = scanner.nextDouble();
+
+                            if (computer >= 0 && computer <= 100)
+                                break;
+
+                            System.out.println("Marks must be between 0 and 100.");
+                        }
+                        catch (Exception e)
+                        {
+                            System.out.println("Invalid input!");
+                            scanner.nextLine();
+                        }
+                    }
+
+                    // Read Social marks
+                    double social;
+                    while (true)
+                    {
+                        try
+                        {
+                            System.out.print("Enter Social Marks (0-100): ");
+                            social = scanner.nextDouble();
+
+                            if (social >= 0 && social <= 100)
+                                break;
+
+                            System.out.println("Marks must be between 0 and 100.");
+                        }
+                        catch (Exception e)
+                        {
+                            System.out.println("Invalid input!");
+                            scanner.nextLine();
+                        }
+                    }
+
+                    // Create Student object
+                    Student student = new Student(
+                            id,
+                            name,
+                            english,
+                            mathematics,
+                            science,
+                            computer,
+                            social
+                    );
+
+                    // Add student
                     manager.addStudent(student);
 
-                    // Exit this case
                     break;
 
                 case 2:
