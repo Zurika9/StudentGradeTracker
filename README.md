@@ -172,6 +172,40 @@ Grade F : 0
 - Main.java
 - README.md
 
+## Milestone 7 - Export Student Report To CSV
+
+### Overview
+Implemented CSV export functionality that generates a spreadsheet-compatible report containing all student records ranked by marks.
+
+### Features
+- Exports all student records to `student_report.csv`
+- Includes Rank, Student ID, Name, Marks, and Grade
+- Sorts students in descending order of marks
+- Compatible with Microsoft Excel, Google Sheets, and LibreOffice Calc
+- Displays a success message after exporting
+
+### Sample CSV Output
+
+```csv
+Rank,ID,Name,Marks,Grade
+1,101,Bhavya Shukla,99.0,A
+2,102,Kartikey Shukla,98.0,A
+3,103,Priya Sharma,95.0,A
+```
+
+### Concepts Used
+- FileWriter
+- BufferedWriter
+- Exception Handling
+- CSV File Generation
+- File I/O
+- Sorting
+
+### Files Updated
+- StudentManager.java
+- Main.java
+- README.md
+
 
 ## Project Structure
 

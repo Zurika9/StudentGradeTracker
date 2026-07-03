@@ -40,8 +40,9 @@ public class Main
             System.out.println("10. Display Student Rankings");
             System.out.println("11. Filter Students By Grade");
             System.out.println("12. Display Grade Distribution");
-            System.out.println("13. Save Data");
-            System.out.println("14. Exit");
+            System.out.println("13. Export Student Report To CSV");
+            System.out.println("14. Save Data");
+            System.out.println("15. Exit");
 
             while(true)
             {
@@ -318,12 +319,19 @@ public class Main
 
                 case 13:
 
+                    // Export all student records to a CSV file
+                    manager.exportToCSV();
+
+                    break;
+
+                case 14:
+
                     // Save all students to the file
                     manager.saveToFile();
 
                     break;
 
-                case 14:
+                case 15:
 
                     // Display exit message
                     System.out.println("Exiting program...");

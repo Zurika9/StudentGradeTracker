@@ -622,6 +622,59 @@ public class StudentManager
 
     }
 
+    // Method to export student data to a CSV file
+    public void exportToCSV()
+    {
+
+        try
+        {
+
+            // Create a writer for the CSV file
+            BufferedWriter writer = new BufferedWriter(new FileWriter("student_report.csv"));
+
+            // Write the column headings
+            writer.write("Rank,ID,Name,Marks,Grade");
+            writer.newLine();
+
+            // Sort students by marks in descending order
+            students.sort((s1, s2) -> Double.compare(s2.getMarks(), s1.getMarks()));
+
+            // Variable to store the rank
+            int rank = 1;
+
+            // Write every student's data
+            for (Student student : students)
+            {
+
+                writer.write(
+                        rank + "," +
+                                student.getId() + "," +
+                                student.getName() + "," +
+                                student.getMarks() + "," +
+                                student.getGrade()
+                );
+
+                writer.newLine();
+
+                rank++;
+
+            }
+
+            // Close the writer
+            writer.close();
+
+            System.out.println("Student report exported successfully to student_report.csv");
+
+        }
+        catch (IOException e)
+        {
+
+            System.out.println("Error exporting CSV file: " + e.getMessage());
+
+        }
+
+    }
+
 
     // Method to search students by name
     public void searchStudentByName(String searchName) {
