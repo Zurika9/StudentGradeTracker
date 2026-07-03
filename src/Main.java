@@ -39,8 +39,9 @@ public class Main
             System.out.println("9. Display Topper");
             System.out.println("10. Display Student Rankings");
             System.out.println("11. Filter Students By Grade");
-            System.out.println("12. Save Data");
-            System.out.println("13. Exit");
+            System.out.println("12. Display Grade Distribution");
+            System.out.println("13. Save Data");
+            System.out.println("14. Exit");
 
             while(true)
             {
@@ -309,12 +310,20 @@ public class Main
 
                 case 12:
 
+                    // Display grade distribution
+                    manager.displayGradeDistribution();
+
+                    // Exit this case
+                    break;
+
+                case 13:
+
                     // Save all students to the file
                     manager.saveToFile();
 
                     break;
 
-                case 13:
+                case 14:
 
                     // Display exit message
                     System.out.println("Exiting program...");

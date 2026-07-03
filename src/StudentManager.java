@@ -524,6 +524,105 @@ public class StudentManager
         }
 
     }
+
+    // Method to display the distribution of grades in the class
+    public void displayGradeDistribution()
+    {
+
+        // Check if there are any students
+        if (students.isEmpty())
+        {
+
+            // Display a message if the list is empty
+            System.out.println("No students available.");
+
+            return;
+
+        }
+
+        // Variables to count each grade
+        int countA = 0;
+        int countB = 0;
+        int countC = 0;
+        int countD = 0;
+        int countF = 0;
+
+        // Loop through every student
+        for (Student student : students)
+        {
+
+            // Count grades using switch statement
+            switch (student.getGrade())
+            {
+
+                case 'A':
+                    countA++;
+                    break;
+
+                case 'B':
+                    countB++;
+                    break;
+
+                case 'C':
+                    countC++;
+                    break;
+
+                case 'D':
+                    countD++;
+                    break;
+
+                case 'F':
+                    countF++;
+                    break;
+
+            }
+
+        }
+
+        // Display heading
+        System.out.println("\n========== GRADE DISTRIBUTION ==========\n");
+
+        // Display each grade with a bar chart
+        System.out.print("Grade A : " + countA + "  ");
+        for (int i = 0; i < countA; i++)
+        {
+            System.out.print("*");
+        }
+        System.out.println();
+
+        System.out.print("Grade B : " + countB + "  ");
+        for (int i = 0; i < countB; i++)
+        {
+            System.out.print("*");
+        }
+        System.out.println();
+
+        System.out.print("Grade C : " + countC + "  ");
+        for (int i = 0; i < countC; i++)
+        {
+            System.out.print("*");
+        }
+        System.out.println();
+
+        System.out.print("Grade D : " + countD + "  ");
+        for (int i = 0; i < countD; i++)
+        {
+            System.out.print("*");
+        }
+        System.out.println();
+
+        System.out.print("Grade F : " + countF + "  ");
+        for (int i = 0; i < countF; i++)
+        {
+            System.out.print("*");
+        }
+        System.out.println();
+
+        System.out.println("\n========================================");
+
+    }
+
+
     // Method to search students by name
     public void searchStudentByName(String searchName) {
 
